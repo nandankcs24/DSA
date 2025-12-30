@@ -187,6 +187,32 @@ int deleteRear() {
 }
 
 /* =========================================================
+   APPLICATION: PETROL PUMP CIRCULAR TOUR
+   (Sample Program)
+   ========================================================= */
+
+int findStart(int petrol[], int dist[], int n) {
+    int start = 0;
+    int curr = 0;
+    int total = 0;
+
+    for (int i = 0; i < n; i++) {
+        curr += petrol[i] - dist[i];
+        total += petrol[i] - dist[i];
+
+        if (curr < 0) {
+            start = i + 1;
+            curr = 0;
+        }
+    }
+
+    if (total >= 0)
+        return start;
+    else
+        return -1;
+}
+
+/* =========================================================
    MAIN FUNCTION (UNCOMMENT AS PER QUESTION)
    ========================================================= */
 
@@ -232,5 +258,19 @@ int main() {
     printf("%d\n", deleteFront());
     */
 
+    /* ---------- PETROL PUMP CIRCULAR TOUR ---------- */
+    /*
+    int n;
+    scanf("%d", &n);
+    int petrol[n], dist[n];
+
+    for (int i = 0; i < n; i++)
+        scanf("%d %d", &petrol[i], &dist[i]);
+
+    printf("%d\n", findStart(petrol, dist, n));
+    */
+
     return 0;
 }
+
+
