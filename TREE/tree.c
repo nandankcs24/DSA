@@ -89,39 +89,45 @@ int findMax(NODE root) {
     return cur->data;
 }
 
-/* =========================================================
-   MAIN FUNCTION
-   ========================================================= */
-
 int main() {
     NODE root = NULL;
+    int choice, val;
 
-    /* ----------  (BST) ---------- */
-    /*
-    // Constructing the Tree (Example Input)
-    root = insertBST(root, 50);
-    root = insertBST(root, 30);
-    root = insertBST(root, 20);
-    root = insertBST(root, 40);
-    root = insertBST(root, 70);
-    root = insertBST(root, 60);
-    root = insertBST(root, 80);
+    while (1) {
+        printf("\n--- BST OPERATIONS MENU ---\n");
+        printf("1. Insert Node (Construct Tree)\n");
+        printf("2. Display Traversals (In/Pre/Post)\n");
+        printf("3. Find Minimum Value\n");
+        printf("4. Find Maximum Value\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    printf("Pre-order Traversal:  ");
-    preorder(root);
-    printf("\n");
-
-    printf("In-order Traversal:   ");
-    inorder(root);
-    printf("\n");
-
-    printf("Post-order Traversal: ");
-    postorder(root);
-    printf("\n");
-
-    printf("Minimum Value: %d\n", findMin(root));
-    printf("Maximum Value: %d\n", findMax(root));
-    */
-
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &val);
+                root = insertBST(root, val);
+                break;
+            case 2:
+                printf("\nPre-order:  "); preorder(root);
+                printf("\nIn-order:   "); inorder(root);
+                printf("\nPost-order: "); postorder(root);
+                printf("\n");
+                break;
+            case 3:
+                val = findMin(root);
+                if (val != -1) printf("Minimum Value: %d\n", val);
+                break;
+            case 4:
+                val = findMax(root);
+                if (val != -1) printf("Maximum Value: %d\n", val);
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    }
     return 0;
 }
