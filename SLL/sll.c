@@ -170,11 +170,16 @@ NODE deleteCircular(NODE head, int key) {
 
     NODE cur = head, prev = NULL;
 
+    if (head->next == head && head->data == key) {
+        free(head);
+        return NULL;
+    }
+
     do {
         if (cur->data == key) {
-            if (prev != NULL)
+            if (prev != NULL) {
                 prev->next = cur->next;
-            else {
+            } else {
                 NODE last = head;
                 while (last->next != head)
                     last = last->next;
@@ -251,6 +256,26 @@ POLY addPoly(POLY p1, POLY p2) {
             tail->next = temp;
             tail = temp;
         }
+    } 
+
+    while (p1 != NULL) {
+        POLY temp = createTerm(p1->coeff, p1->power);
+        if (result == NULL) result = tail = temp;
+        else {
+            tail->next = temp;
+            tail = temp;
+        }
+        p1 = p1->next;
+    }
+
+    while (p2 != NULL) {
+        POLY temp = createTerm(p2->coeff, p2->power);
+        if (result == NULL) result = tail = temp;
+        else {
+            tail->next = temp;
+            tail = temp;
+        }
+        p2 = p2->next;
     }
 
     return result;
