@@ -196,6 +196,19 @@ NODE deleteCircular(NODE head, int key) {
     return head;
 }
 
+void displayCircular(NODE head) {
+    if (head == NULL) {
+        printf("List Empty\n");
+        return;
+    }
+    NODE cur = head;
+    do {
+        printf("%d -> ", cur->data);
+        cur = cur->next;
+    } while (cur != head);
+    printf("(HEAD)\n");
+}
+
 /* =========================================================
    QUESTION 6:
    Browser navigation – find webpage after X clicks
@@ -346,4 +359,5 @@ int main() {
 
     return 0;
 }
+
 
